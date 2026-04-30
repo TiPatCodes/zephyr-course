@@ -13,3 +13,7 @@ Follow the following guide:
 
 Make sure to select appropriate OS and to perform all steps till
 [Build the Blinky Sample](https://docs.zephyrproject.org/latest/develop/getting_started/index.html#build-the-blinky-sample).
+
+
+## Course atlassian link 
+[CLICK HERE] (https://iomico.atlassian.net/wiki/external/OTFlYTBiYmVjYjU5NGY2M2IyOWJhNGY4ZTQxZWM5ODg)
