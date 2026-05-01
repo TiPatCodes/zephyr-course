@@ -1,0 +1,6 @@
+board:
+  name: copy_board
+  full_name: copy_board_STM32F4_Discovery
+  vendor: st
+  socs:
+    - name: stm32f407xx
