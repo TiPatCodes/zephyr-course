@@ -1,0 +1,6 @@
+board:
+  name: scratch_board
+  full_name: Made from scratch_board
+  vendor: Tirth
+  socs:
+    - name: stm32f407xx
