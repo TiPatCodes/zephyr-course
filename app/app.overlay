@@ -2,4 +2,8 @@
     aliases{
         app-led = &orange_led_3;
     };
+    sensor: temp_sensor{
+        compatible = "our,driver";
+        status = "okay";
+    };
 };

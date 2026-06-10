@@ -45,3 +45,7 @@ config APP_HEARTBEAT_PERIOD_MS
     For Task 1 of Lecture 4
 
 source "Kconfig.zephyr"
+rsource "boards\\copy_board\\Kconfig.copy_board"
+rsource "drivers\\our_driver\\Kconfig"
+
+

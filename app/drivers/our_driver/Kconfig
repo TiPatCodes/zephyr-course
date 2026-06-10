@@ -1,0 +1,4 @@
+config OUR_DRIVER
+    bool "Our driver configuration"
+    default y
+    

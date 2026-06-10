@@ -1,0 +1,9 @@
+description: Our custom sensor driver binding
+compatible: "our,driver"
+include: i2c-device.yaml
+
+properties:
+  callibration:
+    type: int
+    required: true
+    
