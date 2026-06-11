@@ -17,19 +17,20 @@ static  int  channel_get_my_imp(const struct device *dev,
     return 0;
 }
 
-
+// wrapping the sensor subsystem api into implemented 
+//our_driver API implementation
 static DEVICE_API(sensor, api_iomico_lecture) = {
     .channel_get = channel_get_my_imp,
 };
 
 
-// Init fn
+// Init fn for our device object
 static int init( const struct device* dev){
     LOG_INF("Device Initialization");
     return 0;
 }
 
 
-
-DEVICE_DT_INST_DEFINE(0, init, NULL , NULL, NULL, POST_KERNEL_1, 80 , &api_iomico_lecture)
+// creating the device struct  object 
+DEVICE_DT_INST_DEFINE(0, init, NULL , NULL, NULL, POST_KERNEL, 80 , &api_iomico_lecture);
 
