@@ -7,7 +7,7 @@
 
 LOG_MODULE_REGISTER(our_driver, LOG_LEVEL_INF);
 
-// custom api wrapped on the standard available api of sensor.h  
+// custom api wrapped on the standard available api of sensor.h  for l6-task1
 static  int  channel_get_my_imp(const struct device *dev,
 				    enum sensor_channel chan,
 				    struct sensor_value *val)
@@ -16,11 +16,26 @@ static  int  channel_get_my_imp(const struct device *dev,
     LOG_INF("Hello from Channel Get, channel %d", chan);
     return 0;
 }
+// custom api wrapped on the standard available api of sensor.h  for l6-task1
+static  int  sample_fetch_my_imp(const struct device *dev,
+				    enum sensor_channel chan)
+{
 
-// wrapping the sensor subsystem api into implemented 
-//our_driver API implementation
+    LOG_INF("Hello from sample fetch" );
+    return 0;
+
+}
+
+
+/*  
+    wrapping the sensor subsystem api into implemented 
+    our_driver API struct implementation which is "api_iomico_lecture"
+    So DEVICE API is basically the function pointer struct for our_driver's implemented api instance - "api_iomico_lecture"
+    Inside this function pointer struct we point to our modified implemented api (i.e channel_get_my_imp)
+*/
 static DEVICE_API(sensor, api_iomico_lecture) = {
     .channel_get = channel_get_my_imp,
+    .sample_fetch = sample_fetch_my_imp,
 };
 
 
@@ -30,7 +45,5 @@ static int init( const struct device* dev){
     return 0;
 }
 
-
 // creating the device struct  object 
 DEVICE_DT_INST_DEFINE(0, init, NULL , NULL, NULL, POST_KERNEL, 80 , &api_iomico_lecture);
-
