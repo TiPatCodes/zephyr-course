@@ -2,10 +2,17 @@
 #include "zephyr/logging/log_core.h"
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/sensor.h>
+#include "sensor_custom_api.h"
+
 
 #define DT_DRV_COMPAT our_driver
 
 LOG_MODULE_REGISTER(our_driver, LOG_LEVEL_INF);
+
+struct our_driver_date{
+    uint32_t param;
+};
+
 
 // custom api wrapped on the standard available api of sensor.h  for l6-task1
 static  int  channel_get_my_imp(const struct device *dev,
@@ -25,6 +32,12 @@ static  int  sample_fetch_my_imp(const struct device *dev,
     return 0;
 
 }
+
+//custom data change API
+static int custom_api_devicedate(const struct device *dev, uint32_t val){
+  struct our_driver_date *data = dev->data;
+  data->param = val;  
+};
 
 
 /*  
