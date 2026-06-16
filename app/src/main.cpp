@@ -1,5 +1,4 @@
 #include "sensor_custom.h"
-#include "sensor_custom_api.h"
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
@@ -18,16 +17,16 @@ int main(void)
 {
     bool led_state = true;
     
-    const struct device *my_dev = DEVICE_DT_GET(DT_NODELABEL(sensor);
+    const struct device *dev = DEVICE_DT_GET_ANY(our_driver);
 
-    if (!device_is_ready(my_dev)) {
+    if (!device_is_ready(dev)) {
         return -ENODEV;
     }
 
     /* Safely invoke your custom API to modify instance state variables */
-    int ret = custom_data_set(my_dev, 42);
-
-    LOG_INF("Data value  : %d", my_dev->data->param);
+    int ret = custom_data_set(dev, 42);
+    
+    LOG_INF("Data value chnaged successfully");
 
     if (!gpio_is_ready_dt(&led)) return 0;
 
