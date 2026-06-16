@@ -1,6 +1,9 @@
+#include "sensor_custom.h"
+#include "sensor_custom_api.h"
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/device.h>
 
 #define SLEEP_TIME_MS CONFIG_APP_HEARTBEAT_PERIOD_MS
 
@@ -14,6 +17,17 @@ LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 int main(void)
 {
     bool led_state = true;
+    
+    const struct device *my_dev = DEVICE_DT_GET(DT_NODELABEL(sensor);
+
+    if (!device_is_ready(my_dev)) {
+        return -ENODEV;
+    }
+
+    /* Safely invoke your custom API to modify instance state variables */
+    int ret = custom_data_set(my_dev, 42);
+
+    LOG_INF("Data value  : %d", my_dev->data->param);
 
     if (!gpio_is_ready_dt(&led)) return 0;
 

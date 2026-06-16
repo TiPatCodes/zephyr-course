@@ -1,16 +1,19 @@
-#include "zephyr/device.h"
-#include "zephyr/logging/log_core.h"
+#include <zephyr/device.h>
+#include <zephyr/logging/log_core.h>
+#include <stdint.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/sensor.h>
-#include "sensor_custom_api.h"
+#include "../../src/sensor_custom.h"
 
 
 #define DT_DRV_COMPAT our_driver
 
 LOG_MODULE_REGISTER(our_driver, LOG_LEVEL_INF);
 
-struct our_driver_date{
-    uint32_t param;
+
+// defining the data struct for the device having - our_driver
+struct our_driver_data {
+    int param;
 };
 
 
@@ -19,10 +22,10 @@ static  int  channel_get_my_imp(const struct device *dev,
 				    enum sensor_channel chan,
 				    struct sensor_value *val)
 {
-
     LOG_INF("Hello from Channel Get, channel %d", chan);
     return 0;
 }
+
 // custom api wrapped on the standard available api of sensor.h  for l6-task1
 static  int  sample_fetch_my_imp(const struct device *dev,
 				    enum sensor_channel chan)
@@ -33,11 +36,13 @@ static  int  sample_fetch_my_imp(const struct device *dev,
 
 }
 
-//custom data change API
-static int custom_api_devicedate(const struct device *dev, uint32_t val){
-  struct our_driver_date *data = dev->data;
+//custom data change API function definition
+int custom_data_set(const struct device *dev, int val)
+{
+  struct our_driver_data *data = dev->data;
   data->param = val;  
-};
+  return 0;
+}
 
 
 /*  
@@ -58,5 +63,9 @@ static int init( const struct device* dev){
     return 0;
 }
 
+
+// struct our_driver_data *our_driver_data_0 ;
+
+
 // creating the device struct  object 
-DEVICE_DT_INST_DEFINE(0, init, NULL , NULL, NULL, POST_KERNEL, 80 , &api_iomico_lecture);
+DEVICE_DT_INST_DEFINE(0, init,NULL ,NULL, &our_driver_data_0, NULL, POST_KERNEL, 80 , &api_iomico_lecture);
