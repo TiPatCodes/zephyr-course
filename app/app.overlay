@@ -13,6 +13,7 @@
         compatible = "our,driver";
         // calibration = <8>;
         status = "okay";
+        label ="our_driver_device";
     };
 };
 

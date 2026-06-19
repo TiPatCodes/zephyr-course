@@ -49,10 +49,10 @@ int custom_data_set_impl(const struct device *dev, int val)
 
 
 /*  
-    wrapping the sensor subsystem api into implemented 
-    our_driver API struct implementation which is "api_iomico_lecture"
-    So DEVICE API is basically the function pointer struct for our_driver's implemented api instance - "api_iomico_lecture"
-    Inside this function pointer struct we point to our modified implemented api (i.e channel_get_my_imp)
+wrapping the sensor subsystem api into implemented 
+our_driver API struct implementation which is "api_iomico_lecture"
+So DEVICE API is basically the function pointer struct for our_driver's implemented api instance - "api_iomico_lecture"
+Inside this function pointer struct we point to our modified implemented api (i.e channel_get_my_imp)
 */
 static DEVICE_API(sensor, api_iomico_lecture) = {
         .channel_get = channel_get_my_impl,
