@@ -49,8 +49,8 @@ ZTEST(ring_buf_init, test_reinit_clears_state)
 	 * verify the buffer is empty and count is 0.
 	 * See TEST_SPEC.md "Suite ring_buf_init" #2.
 	 */
-	rb_push(int 99);
-	rb_init(uint32_t 4);
+	rb_push(99);
+	rb_init(4);
 	zassert_true(rb_is_empty(), "Fresh buffer must be empty #0");
 	zassert_equal(rb_count(), 0, "Fresh buffer count must be 0 #0");
 	// ztest_test_skip();
@@ -73,7 +73,7 @@ ZTEST(ring_buf_push_pop, test_single_push_pop)
 	int v;
 	zassert_equal(rb_push(42),0,"Must push value 42 #1");
 	zassert_equal(rb_pop(&v),0,"Must pop the value 42 #1");
-	zassert_true(if(v == 42), "Pop Value must be 42 #1");
+	zassert_equal(v , 42, "Pop Value must be 42 #1");
 	zassert_true(rb_is_empty(), "After one push and one pop  buffer must be empty #1");
 	// ztest_test_skip();
 }
@@ -89,11 +89,11 @@ ZTEST(ring_buf_push_pop, test_fifo_order)
 	zassert_equal(rb_push(2),0,"Push value must be 2 in #2");
 	zassert_equal(rb_push(3),0,"Push value must be 3 in #2");
 	rb_pop(&v);
-	zassert_true(if(v == 1), "Pop Value must be 1");
+	zassert_equal(v,1, "Pop Value must be 1");
 	rb_pop(&v);
-	zassert_true(if(v == 2), "Pop Value must be 2");
+	zassert_equal(v,2, "Pop Value must be 2");
 	rb_pop(&v);
-	zassert_true(if(v == 3), "Pop Value must be 3");
+	zassert_equal(v ,3, "Pop Value must be 3");
 	zassert_equal(rb_count(), 0, "Buffer count must be 0");
 	// ztest_test_skip();
 }
@@ -110,7 +110,7 @@ ZTEST(ring_buf_push_pop, test_push_full_returns_enospc)
 	zassert_equal(rb_push(4),0,"Must push the value 4 in #3");
 	zassert_true(rb_is_full(),"Rb _full should be true #3");
 	zassert_equal(rb_push(99),-ENOSPC,"The buffer should be return -ENOSPC #3");
-	zassert_true(rb_count(),4,"rb_count should be 4 #3");
+	zassert_equal(rb_count(),4,"rb_count should be 4 #3");
 	// ztest_test_skip();
 }
 
@@ -132,10 +132,10 @@ ZTEST(ring_buf_boundaries, test_peek_does_not_consume)
 	int v;
 	zassert_equal(rb_push(7),0,"Must push the value 1 in #4"); 
 	zassert_equal(rb_peek(&v),0,"rb_peek must give 0 #4");
-	zassert_true(if(v == 7), "Peek Value must be 7 First time #4");
+	zassert_equal(v,7, "Peek Value must be 7 First time #4");
 	zassert_equal(rb_peek(&v),0,"rb_peek must give 0 #4");
-	zassert_true(if(v == 7), "Peek Value must be 7 Second time #4");
-	zassert_true(rb_count(),1,"rb_count should be 1 after peek #4");
+	zassert_equal(v,7, "Peek Value must be 7 Second time #4");
+	zassert_equal(rb_count(),1,"rb_count should be 1 after peek #4");
 
 	// ztest_test_skip();
 }
@@ -160,7 +160,7 @@ ZTEST(ring_buf_boundaries, test_is_full_after_fill)
 	zassert_equal(rb_push(3),0,"Must push the value 3 in #6");
 	zassert_equal(rb_push(4),0,"Must push the value 4 in #6");
 	zassert_true(rb_is_full(), "Buffer must be full  #6");
-	zassert_true(rb_count(),4," Buffer should have 4 elements  #6");
+	zassert_equal(rb_count(),4," Buffer should have 4 elements  #6");
 	
 	// ztest_test_skip();
 }

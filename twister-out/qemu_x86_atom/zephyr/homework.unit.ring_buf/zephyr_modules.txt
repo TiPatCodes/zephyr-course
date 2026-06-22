@@ -1,2 +1,0 @@
-"cmsis_6":"F:/Embedded_learning/Zephyr/ZephyrWrkSpace/deps/modules/hal/cmsis_6":"${ZEPHYR_CMSIS_6_CMAKE_DIR}"
-"hal_stm32":"F:/Embedded_learning/Zephyr/ZephyrWrkSpace/deps/modules/hal/stm32":"F:/Embedded_learning/Zephyr/ZephyrWrkSpace/deps/modules/hal/stm32"

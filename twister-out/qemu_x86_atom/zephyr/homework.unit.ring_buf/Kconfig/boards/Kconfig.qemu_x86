@@ -1,2 +1,0 @@
-# Load board Kconfig descriptions.
-osource "F:/Embedded_learning/Zephyr/ZephyrWrkSpace/deps/zephyr/boards/qemu/x86/Kconfig.qemu_x86"
