@@ -2,12 +2,12 @@
 //     /*
 //     Modifying the chosen node zephyr,console to USB instead of UART2
 //     */
-//     chosen 
+//     chosen
 //     {
 //             zephyr,console = &cdc_acm_uart0;
-     
+
 //     };
-    
+
 // };
 
 /*
