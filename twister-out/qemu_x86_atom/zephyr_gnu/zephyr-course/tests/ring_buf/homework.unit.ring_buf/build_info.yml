@@ -1,0 +1,45 @@
+cmake:
+  application:
+    configuration-dir: 'C:/zephyrtwister/zephyr-course/tests/ring_buf'
+    source-dir: 'C:/zephyrtwister/zephyr-course/tests/ring_buf'
+  board:
+    name: 'qemu_x86'
+    path:
+     - 'C:/zephyrtwister/deps/zephyr/boards/qemu/x86'
+    qualifiers: 'atom'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - 'C:/zephyrtwister/deps/zephyr/dts/bindings'
+    files:
+     - 'C:/zephyrtwister/deps/zephyr/boards/qemu/x86/qemu_x86.dts'
+    include-dirs:
+     - 'C:/zephyrtwister/deps/modules/hal/stm32/dts'
+     - 'C:/zephyrtwister/deps/zephyr/include'
+     - 'C:/zephyrtwister/deps/zephyr/include/zephyr'
+     - 'C:/zephyrtwister/deps/zephyr/dts/common'
+     - 'C:/zephyrtwister/deps/zephyr/dts/vendor'
+     - 'C:/zephyrtwister/deps/zephyr/dts/rx'
+     - 'C:/zephyrtwister/deps/zephyr/dts/x86'
+     - 'C:/zephyrtwister/deps/zephyr/dts/xtensa'
+     - 'C:/zephyrtwister/deps/zephyr/dts/sparc'
+     - 'C:/zephyrtwister/deps/zephyr/dts/riscv'
+     - 'C:/zephyrtwister/deps/zephyr/dts/posix'
+     - 'C:/zephyrtwister/deps/zephyr/dts/arm64'
+     - 'C:/zephyrtwister/deps/zephyr/dts/arm'
+     - 'C:/zephyrtwister/deps/zephyr/dts/arc'
+     - 'C:/zephyrtwister/deps/zephyr/dts'
+  kconfig:
+    files:
+     - 'C:/zephyrtwister/deps/zephyr/boards/qemu/x86/qemu_x86_defconfig'
+     - 'C:/zephyrtwister/zephyr-course/tests/ring_buf/prj.conf'
+     - 'C:/zephyrtwister/zephyr-course/twister-out/qemu_x86_atom/zephyr_gnu/zephyr-course/tests/ring_buf/homework.unit.ring_buf/zephyr/misc/generated/extra_kconfig_options.conf'
+    user-files:
+     - 'C:/zephyrtwister/zephyr-course/tests/ring_buf/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: 'C:/zephyrtwister/zephyr-sdk-1.0.1'
+  zephyr:
+    version: '4.4.99'
+    zephyr-base: 'C:/zephyrtwister/deps/zephyr'
+version: '0.1.0'
