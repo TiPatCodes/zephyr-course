@@ -4,7 +4,7 @@ manifest:
   projects:
     - name: zephyr
       url: https://github.com/zephyrproject-rtos/zephyr
-      revision: v4.2.0
+      revision: ad056d5454d57002c2b330b301d1e9906dd5fd0f
       import:
         name-allowlist:
           - cmsis_6

@@ -1,0 +1,26 @@
+# Available runners configured by board.cmake.
+runners:
+- qemu
+
+# Default flash runner if --runner is not given.
+flash-runner: qemu
+
+# Default debug runner if --runner is not given.
+debug-runner: qemu
+
+# Common runner configuration values.
+config:
+  board_dir: C:/zephyrtwister/deps/zephyr/boards/qemu/x86
+  # Build outputs:
+  elf_file: zephyr.elf
+  # Host tools:
+  gdb: C:/zephyrtwister/zephyr-sdk-1.0.1/gnu/x86_64-zephyr-elf/bin/x86_64-zephyr-elf-gdb.exe
+  openocd: C:/zephyrtwister/zephyr-sdk-1.0.1/hosttools/openocd/bin/openocd.exe
+  openocd_search:
+    - C:/zephyrtwister/zephyr-sdk-1.0.1/hosttools/openocd/share/openocd/scripts
+
+# Runner specific arguments
+args:
+  qemu:
+    []
+
